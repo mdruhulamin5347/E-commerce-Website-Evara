@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+Password reset otp verify
+{% endblock %}
+{% block body %}
+<div class="container my-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">OTP Verification</h2>
+                    <p>Enter the OTP sent to your email to verify your identity.</p>
+
+                    <form method="post" action="{% url 'otp_verification' user.id %}">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="otp">Enter OTP:</label>
+                            <input type="text" class="form-control" name="otp" required>
+                        </div>
+
+                        <button class="btn btn-primary mt-2" type="submit">Verify OTP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
